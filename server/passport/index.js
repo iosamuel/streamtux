@@ -22,7 +22,7 @@ module.exports = function (app) {
         clientSecret: process.env.TWITCH_CLIENT_SECRET,
         callbackURL: `${process.env.BASE_URL}${process.env.TWITCH_CALLBACK_URL}`,
         scope:
-          'channel_check_subscription channel_commercial channel_editor channel_feed_edit channel_feed_read channel_read channel_stream channel_subscriptions collections_edit communities_edit communities_moderate openid user_blocks_edit user_blocks_read user_follows_edit user_read user_subscriptions viewing_activity_read',
+          'channel_check_subscription channel_commercial channel_editor channel_feed_edit channel_feed_read channel_read channel_stream channel_subscriptions collections_edit communities_edit communities_moderate openid user_blocks_edit user_blocks_read user_follows_edit user_read user_subscriptions viewing_activity_read channel:moderate chat:edit chat:read',
       },
       function (token, refreshToken, profile, done) {
         profile.access_token = token
