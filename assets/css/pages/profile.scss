@@ -1,0 +1,10 @@
+@import '@/assets/css/components/twitch-card.scss';
+
+.profile {
+  &__permissions {
+    &--data {
+      @apply my-2 p-4 bg-purple-300 rounded-lg;
+      @apply text-lg p-4 text-white font-bold;
+    }
+  }
+}

@@ -54,10 +54,23 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['nuxt-fontawesome'],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
   build: {},
+  fontawesome: {
+    component: 'fa',
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons',
+        icons: ['faUserCircle', 'faCheckCircle'],
+      },
+      {
+        set: '@fortawesome/free-brands-svg-icons',
+        icons: ['faTwitter'],
+      },
+    ],
+  },
 }

@@ -14,12 +14,16 @@
     "test": "jest"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "nodemon": "^2.0.4",
-    "nuxt": "^2.13.0"
+    "nuxt": "^2.13.0",
+    "nuxt-fontawesome": "^0.4.0"
   },
   "devDependencies": {
+    "@d-fischer/passport-twitch": "^1.0.5",
     "@nuxtjs/eslint-config": "^3.0.0",
     "@nuxtjs/eslint-module": "^2.0.0",
     "@nuxtjs/stylelint-module": "^4.0.0",
@@ -35,9 +39,10 @@
     "eslint-plugin-prettier": "^3.1.4",
     "express-session": "^1.17.1",
     "jest": "^26.0.1",
+    "node-sass": "^4.14.1",
     "passport": "^0.4.1",
-    "@d-fischer/passport-twitch": "^1.0.5",
     "prettier": "^2.0.5",
+    "sass-loader": "^9.0.2",
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",

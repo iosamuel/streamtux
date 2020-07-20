@@ -13,7 +13,6 @@ module.exports = function (app) {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  console.log(`${process.env.BASE_URL}${process.env.TWITCH_CALLBACK_URL}`)
   // twitch
   passport.use(
     new TwitchStrategy(
