@@ -54,7 +54,7 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-fontawesome'],
+  modules: ['nuxt-fontawesome', '@nuxtjs/apollo'],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
@@ -72,5 +72,18 @@ export default {
         icons: ['faTwitter'],
       },
     ],
+  },
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'https://streamtux.herokuapp.com/v1/graphql',
+        wsEndpoint: 'wss://streamtux.herokuapp.com/v1/graphql',
+        httpLinkOptions: {
+          headers: {
+            'X-Hasura-Admin-Secret': 'iosamuel96',
+          },
+        },
+      },
+    },
   },
 }

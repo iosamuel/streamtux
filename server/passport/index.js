@@ -1,5 +1,7 @@
+const gql = require('graphql-tag')
 const passport = require('passport')
 const TwitchStrategy = require('@d-fischer/passport-twitch').Strategy
+const fetchFromGraphQL = require('../utils/fetchFromGraphQL')
 
 module.exports = function (app) {
   app.use(require('cookie-parser')())
@@ -27,29 +29,43 @@ module.exports = function (app) {
         profile.access_token = token
         profile.refresh_token = refreshToken
 
-        return done(null, profile)
+        delete profile.provider
+        delete profile.view_count
 
-        /* fetchFromGraphQL(getEStreamer, {
-          tid: profile.id,
-        }).then(({ data }) => {
-          if (!data.estreamers_by_pk) {
-            fetchFromGraphQL(insertSingleEstreamer, {
-              estreamer: {
-                tid: profile.id,
-                access_token: profile.access_token,
-                token_secret: profile.token_secret,
-              },
-              estreamer_permissions: {
-                tid: profile.id,
-                retweet: true,
-              },
-            }).then(() => {
+        fetchFromGraphQL(
+          `
+            query getUser($userID: String!, $userLogin: String!) {
+              user_by_pk(id: $userID, login: $userLogin) {
+                id
+              }
+            }
+          `,
+          {
+            userID: profile.id,
+            userLogin: profile.login,
+          }
+        ).then(({ data }) => {
+          if (!data.user_by_pk) {
+            fetchFromGraphQL(
+              `
+                mutation insertSingleUser($user: user_insert_input!) {
+                  insert_user_one(object: $user) {
+                    id
+                  }
+                }
+              `,
+              {
+                user: {
+                  ...profile,
+                },
+              }
+            ).then(() => {
               done(null, profile)
             })
           } else {
             done(null, profile)
           }
-        }) */
+        })
       }
     )
   )
