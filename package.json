@@ -18,7 +18,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "@nuxtjs/apollo": "^4.0.1-rc.1",
     "cross-env": "^7.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "graphql-tag": "^2.10.4",
     "nodemon": "^2.0.4",
     "nuxt": "^2.13.0",
